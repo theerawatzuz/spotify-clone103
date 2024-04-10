@@ -1,6 +1,9 @@
 import home from './assets/icons/home.png'
 import search from './assets/icons/search.png'
 
+
+
+
 export default function NavLeftTop() {
   return (
     <div class="gap-2 rounded-lg bg-zinc-800">
@@ -12,6 +15,10 @@ export default function NavLeftTop() {
           <div class="flex gap-4 cursor-pointer text-zinc-400">
             <img src={search} alt="search" />
             <div class="search-text">ค้นหา</div>
+
+
+
+            
         </div>
       </div>
     </div>
