@@ -3,7 +3,7 @@ import search from './assets/icons/search.png'
 
 export default function NavLeftTop() {
   return (
-    <div class="gap-2 rounded-lg">
+    <div class="gap-2 rounded-lg bg-zinc-800">
       <div class="grid p-8 gap-5 font-bold text-white">
         <div class="flex gap-4 cursor-pointer">
           <img src={home} alt="home" />
