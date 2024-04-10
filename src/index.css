@@ -12,6 +12,13 @@
   @apply visible z-50;
 }
 
+.search-text {
+  transition: color 0.3s ease;
+}
+
+.search-text:hover {
+  color: white;
+}
 
 #ofBar {
   background: #fff;

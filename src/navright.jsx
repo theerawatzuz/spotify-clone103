@@ -4,7 +4,7 @@ import lefticon from './assets/icons/left-chevron.png'
 import righticon from './assets/icons/chevron.png'
 import profile from './assets/pic/profile.jpg'
 
-export default function Nav() {
+export default function NavRight() {
   return (
     <div class="bg-zinc-800 p-3 ml-3 rounded-lg">
       <div class="flex justify-between">
