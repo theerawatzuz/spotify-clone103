@@ -18,6 +18,7 @@ export default function NavLeftDown() {
           <div>
             <img src={album} alt="album" />
           </div>
+          
            คอลเลกชันของคุณ
         </div>
         <div class="flex items-center search-text cursor-pointer gap-7">
@@ -45,7 +46,7 @@ export default function NavLeftDown() {
                 <a
                   href="#"
                   className={classNames(
-                    active ? 'bg-zinc-900 text-gray-300' : 'text-gray-400',
+                    active ? 'bg-zinc-800 text-gray-300' : 'text-gray-400',
                     'block px-4 py-2 text-sm'
                   )}
                 >
@@ -58,7 +59,7 @@ export default function NavLeftDown() {
                 <a
                 href="#"
                 className={classNames(
-                  active ? 'bg-zinc-900 text-gray-300' : 'text-gray-400',
+                  active ? 'bg-zinc-800 text-gray-300' : 'text-gray-400',
                   'block px-4 py-2 text-sm'
                 )}
               >
