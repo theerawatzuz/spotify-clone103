@@ -20,7 +20,9 @@
   color: white;
 }
 
-
+.hide-scroll::-webkit-scrollbar {
+  width: 0; 
+}
 
 
 #ofBar {

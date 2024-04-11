@@ -5,12 +5,17 @@ import next from './assets/icons/next.png'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
+import React, { useState } from 'react';
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 
 export default function NavLeftDown() {
+
+  const [showTooltip, setShowTooltip] = useState(true);
+
   return (
     <div class="rounded-t-lg bg-zinc-800">
       <div class="flex p-8 gap-5 justify-between font-bold text-zinc-400">
@@ -25,8 +30,17 @@ export default function NavLeftDown() {
           <Menu as="div">
           <div class="has-tooltip flex items-center">
             <Menu.Button>
-            <img class="h-4 has-tooltip" src={plus} alt="Add new"/>
-              <span class='tooltip rounded shadow-lg p-2 bg-zinc-900 text-white mt-2 -mx-10'>สร้างเพลย์ลิสต์หรือโฟลเดอร์</span>
+            <img 
+            class="h-4 has-tooltip" 
+            src={plus} 
+            alt="Add new"
+            onClick={() => setShowTooltip(!showTooltip)} 
+            />
+            {showTooltip && (
+              <span class='tooltip rounded shadow-lg p-2 bg-zinc-900 text-white mt-2 -mx-10'>
+                สร้างเพลย์ลิสต์หรือโฟลเดอร์
+                </span>
+                )}
               </Menu.Button>
            </div>
 

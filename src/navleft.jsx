@@ -3,7 +3,7 @@ import NavLeftDown from './navleftDOWN'
 
 export default function NavLeft() {
   return (
-    <div class="grid gap-2">
+    <div class="flex flex-col gap-2">
       <div >
         <NavLeftTop/>
     
