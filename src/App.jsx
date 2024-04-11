@@ -1,9 +1,11 @@
 import NavRight from './navright.jsx'
 import NavLeft from './navleft.jsx'
+import PlayerFooter from './playerFooter.jsx'
 
 export default function App() {
   return (
     <>
+    <div class="relative">
     <div class="grid grid-cols-12 gap-2 bg-zinc-950 p-2 h-screen">
         <div class="flex flex-col col-span-3 ">
 
@@ -117,8 +119,16 @@ export default function App() {
         <div class="col-span-9 bg-zinc-800 rounded-lg">
           <NavRight />
           10
+          
           </div>
+        
      </div>
+     <div class="fixed bottom-0 left-0 right-0">
+      <PlayerFooter/>
+     </div>
+ 
+     </div>
+     
     </>
   )
 }

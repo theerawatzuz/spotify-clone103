@@ -93,7 +93,7 @@ export default function NavLeftDown() {
         </div>
       </div>
       <div>
-      <div class="flex gap-3 pl-8 pr-8">
+      <div class="flex gap-3 pl-8 pr-8 pb-1">
 
             <button class=" bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded-full">
               เพลย์ลิสต์
