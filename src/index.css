@@ -24,30 +24,6 @@
   width: 0; 
 }
 
-.container {
-  display: flex;
-  grid-template-columns: 1fr 1fr 1fr; /* แบ่งพื้นที่เป็น 3 ส่วนที่มีความกว้างเท่ากัน */
-  gap: 10px; /* ระยะห่างระหว่างส่วน */
-}
-
-.col {
-  display: flex;
-  align-items: center;
-  height: 100px;
-  border: 1px solid black;
-}
-
-.left {
-  grid-column: 1; /* ตำแหน่งที่ 1 */
-}
-
-.center {
-  grid-column: 2; /* ตำแหน่งที่ 2 */
-}
-
-.right {
-  grid-column: 3; /* ตำแหน่งที่ 3 */
-}
 
 #ofBar {
   background: #fff;
