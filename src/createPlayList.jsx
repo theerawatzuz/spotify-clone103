@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 
 export default function CreatePlayList() {
 
     const [isHovered, setIsHovered] = useState(false);
+    const [playlist, setPlaylist] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
   const handleHover = () => {
     setIsHovered(true);
@@ -11,6 +14,24 @@ export default function CreatePlayList() {
   const handleMouseOut = () => {
     setIsHovered(false);
   };
+
+  useEffect(() => {
+    axios.get('http://ec2-18-142-50-33.ap-southeast-1.compute.amazonaws.com:5000/api/musicProduct')
+      .then(response => {
+        setPlaylist(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data: ', error);
+      });
+  }, []);
+
+        const filteredPlaylist = playlist.filter(song => {
+          return (
+            song.nameSong.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            song.nameAlbum.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            song.nameArtist.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+        });
 
     return(
         <>
@@ -66,11 +87,45 @@ export default function CreatePlayList() {
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-zinc-900 border border-zinc-300 rounded-sm bg-zinc-50  dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-zinc-500 dark:focus:border-zinc-500" placeholder="ค้นหาเพลงหรือตอน" required />
+                        <input 
+                          type="search" 
+                          id="default-search" 
+                          class="block w-full p-4 ps-10 text-sm text-white border rounded-sm bg-zinc-700  dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-zinc-500 dark:focus:border-zinc-500" 
+                          placeholder="ค้นหาเพลงหรือตอน" 
+                          value={searchTerm} 
+                          onChange={(e) => setSearchTerm(e.target.value)} 
+                          required 
+                        />
                     </div>
                 </form>
             </div>
-            <div class="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
+            {filteredPlaylist.map(song => (
+                  <div key={song.id} className="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
+                    <div className="col-span-5 w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row">
+                      <img
+                        className="h-16 w-16 rounded-lg object-cover"
+                        src={song.picAlbum}
+                        alt="" />
+                      <div className="flex flex-col justify-start p-2">
+                        <p className="text-base mb-2">
+                          {song.nameSong}
+                        </p>
+                        <p className="text-xs text-surface/75 text-zinc-400">
+                          {song.nameArtist} 
+                        </p>
+                      </div>
+                    </div>
+                    <div className="col-span-3 w-full text-zinc-400 flex items-center justify-start truncate">
+                      {song.nameAlbum}
+                    </div>
+                    <div className="col-span-2 w-full text-white flex items-center pr-3 justify-end">
+                      <button className="bg-transparent text-white font-semibold hover:text-white py-1 px-4 border border-zinc-500 hover:border-white rounded-full">
+                        เพิ่ม
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              {/* <div class="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
               <div class="col-span-5 w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
                   <img
                     class="h-16 w-16 rounded-lg object-cover "
@@ -144,32 +199,7 @@ export default function CreatePlayList() {
                     เพิ่ม
                 </button>
                 </div>
-              </div>
-              <div class="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
-              <div class="col-span-5 w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
-                  <img
-                    class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-                    alt="" />
-                  <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      ถูกใจ 
-                    </p>
-                  </div>
-                </div>
-                <div class="col-span-3 w-full text-zinc-400 flex items-center justify-start truncate">
-                          Neque porro quisquam est qui dolorem ipsum quia dolor sit a
-                </div>
-                <div class="col-span-2 w-full text-white flex items-center pr-3 justify-end">
-                <button class="bg-transparent text-white font-semibold hover:text-white py-1 px-4 border border-zinc-500 hover:border-white rounded-full">
-                    เพิ่ม
-                </button>
-                </div>
-              </div>
+              </div> */}
 
             {/* forPushContentUp */}
               <div class="h-32">
