@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
-export default function CreatePlayList() {
+export default function CreatePlayList({setShowNavRight}) {
 
     const [isHovered, setIsHovered] = useState(false);
     const [playlist, setPlaylist] = useState([]);
@@ -45,6 +45,7 @@ export default function CreatePlayList() {
         
         const fixName = "เพลย์ลิสต์ของฉัน";
 
+
     const handleSavePlaylist = () => {
         const data = {
           namePlayList: fixName,
@@ -55,14 +56,19 @@ export default function CreatePlayList() {
         axios.post('http://ec2-18-142-50-33.ap-southeast-1.compute.amazonaws.com:5000/api/playList', data)
           .then(response => {
             console.log(response.data);
+            handleClick();
           })
           .catch(error => {
             console.error(error);
           });
         }
+
+        const handleClick = () => {
+          setShowNavRight(true);
+        };
         
         console.log(addedSongs)
-        console.log(data)
+    
     return(
         <>
         <div class="flex h-80 w-auto pl-10 pt-10 bg-gradient-to-b from-zinc-800 to-zinc-900 gap-7">
