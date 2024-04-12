@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import NavRight from './navright.jsx'
 import NavLeft from './navleft.jsx'
 import PlayerFooter from './playerFooter.jsx'
@@ -7,6 +8,7 @@ import CreatePlayList from './createPlayList.jsx'
 export default function App() {
 
   const [showNavRight, setShowNavRight] = useState(true);
+  const [playlist, setPlaylist] = useState([]);
 
   const handleMenuClick = () => {
     // console.log('มีการคลิกเมนูใน NavletDown.jsx');
@@ -17,6 +19,16 @@ export default function App() {
     window.handleMenuClick = handleMenuClick;
   }
 
+  useEffect(() => {
+    axios.get('http://ec2-18-142-50-33.ap-southeast-1.compute.amazonaws.com:5000/api/playList')
+      .then(response => {
+        setPlaylist(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data: ', error);
+      });
+  }, []);
+
   return (
     <>
     <div class="relative">
@@ -25,16 +37,17 @@ export default function App() {
 
           <NavLeft/>
           <div class="hide-scroll bg-zinc-800 pt-4 overflow-y-auto flex-grow h-10"> 
-              <div class="pl-2 pr-2 ">
+              { playlist.map(list => (
+              <div class="pl-2 pr-2 cursor-pointer">
               <div class="gap-2 item-center pt-2 pb-2 pl-6 hover:bg-zinc-900 flex flex-col rounded-lg bg-zinc-800 text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
                   <img
                     class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
+                    src={list.picPlayList}
                     alt="" />
                   <div class="flex flex-col justify-start p-2">
                   
                     <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
+                      {list.namePlayList}
                     </p>
                     <p class="text-xs text-surface/75 text-zinc-400">
                       เพลย์ลิสต์ 
@@ -42,24 +55,11 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              <div class="pl-2 pr-2 ">
-              <div class="gap-2 item-center pt-2 pb-2 pl-6 hover:bg-zinc-900 flex flex-col rounded-lg bg-zinc-800 text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
-                  <img
-                    class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-                    alt="" />
-                  <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      ถูกใจ 
-                    </p>
-                  </div>
-                </div>
+              ))}
+               <div class="h-32">
+                 {/* footer */}
               </div>
-              <div class="pl-2 pr-2 ">
+              {/* <div class="pl-2 pr-2 ">
               <div class="gap-2 item-center pt-2 pb-2 pl-6 hover:bg-zinc-900 flex flex-col rounded-lg bg-zinc-800 text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
                   <img
                     class="h-16 w-16 rounded-lg object-cover "
@@ -75,58 +75,8 @@ export default function App() {
                     </p>
                   </div>
                 </div>
-              </div>
-              <div class="pl-2 pr-2 ">
-              <div class="gap-2 item-center pt-2 pb-2 pl-6 hover:bg-zinc-900 flex flex-col rounded-lg bg-zinc-800 text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
-                  <img
-                    class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-                    alt="" />
-                  <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      ถูกใจ 
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="pl-2 pr-2 ">
-              <div class="gap-2 item-center pt-2 pb-2 pl-6 hover:bg-zinc-900 flex flex-col rounded-lg bg-zinc-800 text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
-                  <img
-                    class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-                    alt="" />
-                  <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      ถูกใจ 
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="pl-2 pr-2 ">
-              <div class="gap-2 item-center pt-2 pb-2 pl-6 hover:bg-zinc-900 flex flex-col rounded-lg bg-zinc-800 text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
-                  <img
-                    class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-                    alt="" />
-                  <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      ถูกใจ 
-                    </p>
-                  </div>
-                </div>
-              </div>  
+              </div> */}
+          
           </div>
               
           </div>
