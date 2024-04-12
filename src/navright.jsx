@@ -4,17 +4,23 @@ import lefticon from './assets/icons/left-chevron.png'
 import righticon from './assets/icons/chevron.png'
 import profile from './assets/pic/profile.jpg'
 
-export default function NavRight() {
+export default function NavRight({ setShowNavRight }) {
+
+  const handleClick = () => {
+    setShowNavRight(true);
+  };
   return (
+
+    
     <div class="bg-zinc-800 p-3 ml-3 rounded-lg">
       <div class="flex justify-between">
         <div class="flex gap-1">
-          <button class="bg-zinc-950 hover:bg-zinc-950 text-white font-bold py-2 px-2 rounded-full">
+          <button class="bg-zinc-950 hover:bg-zinc-950 text-white font-bold py-2 px-2 rounded-full" onClick={handleClick}>
           <img src={lefticon} alt="left" />
              </button>
-             <button class="bg-zinc-950 hover:bg-zinc-950 text-white font-bold py-2 px-2 rounded-full">
+             {/* <button class="bg-zinc-950 hover:bg-zinc-950 text-white font-bold py-2 px-2 rounded-full">
              <img src={righticon} alt="rifgt" />
-             </button>
+             </button> */}
         </div>
         <div class="flex gap-1 ">
           <button class="bg-white hover:bg-slate-300 text-black font-bold py-2 px-4 rounded-full">

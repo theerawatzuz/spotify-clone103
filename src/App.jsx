@@ -131,7 +131,7 @@ export default function App() {
               
           </div>
         <div class="flex flex-col col-span-9 bg-zinc-800 rounded-lg">
-        <NavRight/>
+        <NavRight setShowNavRight={setShowNavRight}/>
         {showNavRight ? ( 
           <div class="overflow-y-auto flex-grow h-10">
               <div class="flex gap-3 mt-4 pl-5">
