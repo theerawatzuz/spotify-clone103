@@ -185,9 +185,9 @@ export default function App() {
             
           ) : (
           
-             
+            <div class="hide-scroll overflow-y-auto flex-grow h-10">
               <CreatePlayList />
-         
+            </div>
               
             )}
           
