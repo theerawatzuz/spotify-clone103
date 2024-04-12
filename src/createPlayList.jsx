@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
-export default function CreatePlayList({setShowNavRight}) {
+export default function CreatePlayList({ setShowNavRight, fetchData }) {
 
     const [isHovered, setIsHovered] = useState(false);
     const [playlist, setPlaylist] = useState([]);
@@ -57,6 +57,7 @@ export default function CreatePlayList({setShowNavRight}) {
           .then(response => {
             console.log(response.data);
             handleClick();
+            fetchData();
           })
           .catch(error => {
             console.error(error);

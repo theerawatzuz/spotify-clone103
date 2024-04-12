@@ -19,7 +19,7 @@ export default function App() {
     window.handleMenuClick = handleMenuClick;
   }
 
-  useEffect(() => {
+  const fetchData = () => {
     axios.get('http://ec2-18-142-50-33.ap-southeast-1.compute.amazonaws.com:5000/api/playList')
       .then(response => {
         setPlaylist(response.data);
@@ -27,7 +27,13 @@ export default function App() {
       .catch(error => {
         console.error('Error fetching data: ', error);
       });
+  };
+
+  useEffect(() => {
+    fetchData(); 
   }, []);
+
+ 
 
   return (
     <>
@@ -37,51 +43,26 @@ export default function App() {
 
           <NavLeft/>
           <div class="hide-scroll bg-zinc-800 pt-4 overflow-y-auto flex-grow h-10"> 
-              { playlist.map(list => (
+            {playlist.slice().reverse().map(list => (
               <div class="pl-2 pr-2 cursor-pointer">
-              <div class="gap-2 item-center pt-2 pb-2 pl-6 hover:bg-zinc-900 flex flex-col rounded-lg bg-zinc-800 text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
+                <div class="gap-2 item-center pt-2 pb-2 pl-6 hover:bg-zinc-900 flex flex-col rounded-lg bg-zinc-800 text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
                   <img
                     class="h-16 w-16 rounded-lg object-cover "
                     src={list.picPlayList}
-                    alt="" />
+                    alt=""
+                  />
                   <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      {list.namePlayList}
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      เพลย์ลิสต์ 
-                    </p>
+                    <p class="text-base mb-2">{list.namePlayList}</p>
+                    <p class="text-xs text-surface/75 text-zinc-400">เพลย์ลิสต์</p>
                   </div>
                 </div>
               </div>
-              ))}
-               <div class="h-32">
-                 {/* footer */}
-              </div>
-              {/* <div class="pl-2 pr-2 ">
-              <div class="gap-2 item-center pt-2 pb-2 pl-6 hover:bg-zinc-900 flex flex-col rounded-lg bg-zinc-800 text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
-                  <img
-                    class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-                    alt="" />
-                  <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      ถูกใจ 
-                    </p>
-                  </div>
-                </div>
-              </div> */}
-          
+            ))}
           </div>
               
           </div>
         <div class="flex flex-col col-span-9 bg-zinc-800 rounded-lg">
-        <NavRight etShowNavRight={setShowNavRight}/>
+        <NavRight setShowNavRight={setShowNavRight}/>
         {showNavRight ? ( 
           <div class="overflow-y-auto flex-grow h-10">
               <div class="flex gap-3 mt-4 pl-5">
@@ -136,7 +117,7 @@ export default function App() {
           ) : (
           
             <div class="hide-scroll overflow-y-auto flex-grow h-10">
-              <CreatePlayList setShowNavRight={setShowNavRight}/>
+              <CreatePlayList setShowNavRight={setShowNavRight} fetchData={fetchData}/>
             </div>
               
             )}
