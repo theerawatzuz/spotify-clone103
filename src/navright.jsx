@@ -33,17 +33,7 @@ export default function NavRight() {
             <img class="w-9 h-9 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 ml-1" src={profile} alt="Bordered avatar"/>
         </div>
       </div>
-      <div class="flex gap-3 mt-4">
-            <button class="bg-white hover:bg-slate-300 text-black font-bold py-2 px-4 rounded-full">
-              ทั้งหมด
-            </button>
-            <button class="bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded-full">
-              เพลง
-            </button>
-            <button class="bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded-full">
-              พอดแคสต์
-            </button>
-      </div>
+  
     </div>
   )
 }

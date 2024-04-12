@@ -24,6 +24,15 @@
   width: 0; 
 }
 
+.text-wrap {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* จำนวนบรรทัดที่ต้องการแสดง */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 
 #ofBar {
   background: #fff;

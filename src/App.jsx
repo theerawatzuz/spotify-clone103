@@ -1,8 +1,22 @@
+import React, { useState } from 'react';
 import NavRight from './navright.jsx'
 import NavLeft from './navleft.jsx'
 import PlayerFooter from './playerFooter.jsx'
+import CreatePlayList from './createPlayList.jsx'
 
 export default function App() {
+
+  const [showNavRight, setShowNavRight] = useState(true);
+
+  const handleMenuClick = () => {
+    // console.log('มีการคลิกเมนูใน NavletDown.jsx');
+    setShowNavRight(false);
+  };
+
+  if (typeof window !== 'undefined') {
+    window.handleMenuClick = handleMenuClick;
+  }
+
   return (
     <>
     <div class="relative">
@@ -116,11 +130,68 @@ export default function App() {
           </div>
               
           </div>
-        <div class="col-span-9 bg-zinc-800 rounded-lg">
-          <NavRight />
-          10
+        <div class="flex flex-col col-span-9 bg-zinc-800 rounded-lg">
+        <NavRight/>
+        {showNavRight ? ( 
+          <div class="overflow-y-auto flex-grow h-10">
+              <div class="flex gap-3 mt-4 pl-5">
+              <button class="bg-white hover:bg-slate-300 text-black font-bold py-2 px-4 rounded-full">
+                ทั้งหมด
+              </button>
+              <button class="bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded-full">
+                เพลง
+              </button>
+              <button class="bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded-full">
+                พอดแคสต์
+              </button>
+        </div>
+             
+            <div class="hide-scroll p-7 text-white text-2xl font-bold ">
+              มิกซ์ยอดนิยม
+              <div class=" flex pb-5 pt-3 ">
+                <div class="w-48 p-3 rounded-lg overflow-hidden hover:bg-zinc-900 ">
+                  <img class="w-48 h-auto rounded-lg " src="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb013b76dbf70fc11888902360/1/th/default" alt="Sunset in the mountains"/>
+                  <div class="pt-2">
+                    <div class="font-bold text-base mb-2">The Coldest Sunset</div>
+                    <p class="text-gray-500 text-xs text-wrap">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                    </p>
+                  </div>
+               
+                </div>
+                <div class="w-48 p-3 rounded-lg overflow-hidden hover:bg-zinc-900 ">
+                  <img class="w-48 h-auto rounded-lg " src="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb013b76dbf70fc11888902360/1/th/default" alt="Sunset in the mountains"/>
+                  <div class="pt-2">
+                    <div class="font-bold text-base mb-2">The Coldest Sunset</div>
+                    <p class="text-gray-500 text-xs text-wrap">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                    </p>
+                  </div>
+               
+                </div>
+                <div class="w-48 p-3 rounded-lg overflow-hidden hover:bg-zinc-900 ">
+                  <img class="w-48 h-auto rounded-lg " src="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb013b76dbf70fc11888902360/1/th/default" alt="Sunset in the mountains"/>
+                  <div class="pt-2">
+                    <div class="font-bold text-base mb-2">The Coldest Sunset</div>
+                    <p class="text-gray-500 text-xs text-wrap">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                    </p>
+                  </div>
+               
+                </div>
+              </div>
+            </div>
+            </div>
+            
+          ) : (
           
-          </div>
+             
+              <CreatePlayList />
+         
+              
+            )}
+          
+        </div>
         
      </div>
      <div class="fixed bottom-0 left-0 right-0">

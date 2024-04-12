@@ -16,6 +16,13 @@ export default function NavLeftDown() {
 
   const [showTooltip, setShowTooltip] = useState(true);
 
+  const handleMenuClick = () => {
+    // เรียกใช้งานฟังก์ชันที่ถูกส่งมาจาก App.jsx เพื่อบันทึกการคลิก
+    if (typeof window !== 'undefined' && window.handleMenuClick) {
+      window.handleMenuClick();
+    }
+  };
+
   return (
     <div class="rounded-t-lg bg-zinc-800">
       <div class="flex p-8 gap-5 justify-between font-bold text-zinc-400">
@@ -59,6 +66,7 @@ export default function NavLeftDown() {
               {({ active }) => (
                 <a
                   href="#"
+                  onClick={handleMenuClick}
                   className={classNames(
                     active ? 'bg-zinc-800 text-gray-300' : 'text-gray-400',
                     'block px-4 py-2 text-sm'
