@@ -70,8 +70,8 @@ export default function CreatePlayList() {
                     </div>
                 </form>
             </div>
-            <div class="pr-2 flex hover:bg-zinc-900 justify-between rounded-md">
-              <div class="w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
+            <div class="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
+              <div class="col-span-5 w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
                   <img
                     class="h-16 w-16 rounded-lg object-cover "
                     src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
@@ -86,11 +86,38 @@ export default function CreatePlayList() {
                     </p>
                   </div>
                 </div>
-                <div class="text-white">
-                    1
+                <div class="col-span-3 w-full text-zinc-400 flex items-center justify-start truncate">
+                          Neque porro quisquam est qui dolorem ipsum quia dolor sit a
                 </div>
-                <div class="text-white">
-                    1
+                <div class="col-span-2 w-full text-white flex items-center pr-3 justify-end">
+                <button class="bg-transparent text-white font-semibold hover:text-white py-1 px-4 border border-zinc-500 hover:border-white rounded-full">
+                    เพิ่ม
+                </button>
+                </div>
+              </div>
+              <div class="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
+              <div class="col-span-5 w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
+                  <img
+                    class="h-16 w-16 rounded-lg object-cover "
+                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
+                    alt="" />
+                  <div class="flex flex-col justify-start p-2">
+                  
+                    <p class="text-base mb-2">
+                      เพลย์ลิสต์ของฉัน
+                    </p>
+                    <p class="text-xs text-surface/75 text-zinc-400">
+                      ถูกใจ 
+                    </p>
+                  </div>
+                </div>
+                <div class="col-span-3 w-full text-zinc-400 flex items-center justify-start truncate">
+                          Neque porro quisquam est qui dolorem ipsum quia dolor sit a
+                </div>
+                <div class="col-span-2 w-full text-white flex items-center pr-3 justify-end">
+                <button class="bg-transparent text-white font-semibold hover:text-white py-1 px-4 border border-zinc-500 hover:border-white rounded-full">
+                    เพิ่ม
+                </button>
                 </div>
               </div>
         </div>
