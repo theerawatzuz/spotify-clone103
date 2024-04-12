@@ -81,9 +81,22 @@ export default function CreatePlayList() {
             <div class="text-8xl font-bold cursor-pointer">
                  เพลย์ลิสต์ของฉัน
             </div>
+            {addedSongs.length > 0 && (
+            <div class="flex pb-4 gap-4 items-center">
+              <div class="">
+                <button class="bg-green-500 hover:bg-green-400 text-zinc-900 font-bold py-4 px-6 rounded-full text-xl">
+                บันทึก
+              </button>
+            </div>
+            <div class="font-bold text-xl">
+              {addedSongs.length} เพลง, {Math.floor(addedSongs.reduce((total, song) => total + song.playTime, 0) / 60)} นาที {addedSongs.reduce((total, song) => total + song.playTime, 0) % 60} วินาที
+            </div>
+         </div>
+          )}
          </div>
         </div>
         <div class="text-white p-7">
+        
         {addedSongs.length > 0 && addedSongs.map(song => (
              <div key={song.id} className="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
              <div className="col-span-5 w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row">
