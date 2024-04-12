@@ -43,8 +43,26 @@ export default function CreatePlayList() {
           setAddedSongs(updatedSongs);
         };
         
+        const fixName = "เพลย์ลิสต์ของฉัน";
+
+    const handleSavePlaylist = () => {
+        const data = {
+          namePlayList: fixName,
+          picPlayList: addedSongs[0].picAlbum,
+          songPlayList: addedSongs
+        }
+
+        axios.post('http://ec2-18-142-50-33.ap-southeast-1.compute.amazonaws.com:5000/api/playList', data)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+        }
         
-        
+        console.log(addedSongs)
+        console.log(data)
     return(
         <>
         <div class="flex h-80 w-auto pl-10 pt-10 bg-gradient-to-b from-zinc-800 to-zinc-900 gap-7">
@@ -79,12 +97,14 @@ export default function CreatePlayList() {
                 เพลย์ลิสต์
             </div>
             <div class="text-8xl font-bold cursor-pointer">
-                 เพลย์ลิสต์ของฉัน
+                 {fixName}
             </div>
             {addedSongs.length > 0 && (
             <div class="flex pb-4 gap-4 items-center">
               <div class="">
-                <button class="bg-green-500 hover:bg-green-400 text-zinc-900 font-bold py-4 px-6 rounded-full text-xl">
+                <button class="bg-green-500 hover:bg-green-400 text-zinc-900 font-bold py-4 px-6 rounded-full text-xl"
+                onClick={handleSavePlaylist}
+                >
                 บันทึก
               </button>
             </div>
@@ -184,82 +204,7 @@ export default function CreatePlayList() {
                 </div>
               ))}
 
-              {/* <div class="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
-              <div class="col-span-5 w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
-                  <img
-                    class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-                    alt="" />
-                  <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      ถูกใจ 
-                    </p>
-                  </div>
-                </div>
-                <div class="col-span-3 w-full text-zinc-400 flex items-center justify-start truncate">
-                          Neque porro quisquam est qui dolorem ipsum quia dolor sit a
-                </div>
-                <div class="col-span-2 w-full text-white flex items-center pr-3 justify-end">
-                <button class="bg-transparent text-white font-semibold hover:text-white py-1 px-4 border border-zinc-500 hover:border-white rounded-full">
-                    เพิ่ม
-                </button>
-                </div>
-              </div>
-              <div class="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
-              <div class="col-span-5 w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
-                  <img
-                    class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-                    alt="" />
-                  <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      ถูกใจ 
-                    </p>
-                  </div>
-                </div>
-                <div class="col-span-3 w-full text-zinc-400 flex items-center justify-start truncate">
-                          Neque porro quisquam est qui dolorem ipsum quia dolor sit a
-                </div>
-                <div class="col-span-2 w-full text-white flex items-center pr-3 justify-end">
-                <button class="bg-transparent text-white font-semibold hover:text-white py-1 px-4 border border-zinc-500 hover:border-white rounded-full">
-                    เพิ่ม
-                </button>
-                </div>
-              </div>
-              <div class="pr-2 grid grid-cols-10 hover:bg-zinc-900 justify-between rounded-md">
-              <div class="col-span-5 w-full gap-2 item-center pt-2 pb-2 pl-2  flex flex-col rounded-lg  text-surface shadow-secondary-1 dark:bg-surface-dark text-white md:max-w-xl md:flex-row ">
-                  <img
-                    class="h-16 w-16 rounded-lg object-cover "
-                    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-                    alt="" />
-                  <div class="flex flex-col justify-start p-2">
-                  
-                    <p class="text-base mb-2">
-                      เพลย์ลิสต์ของฉัน
-                    </p>
-                    <p class="text-xs text-surface/75 text-zinc-400">
-                      ถูกใจ 
-                    </p>
-                  </div>
-                </div>
-                <div class="col-span-3 w-full text-zinc-400 flex items-center justify-start truncate">
-                          Neque porro quisquam est qui dolorem ipsum quia dolor sit a
-                </div>
-                <div class="col-span-2 w-full text-white flex items-center pr-3 justify-end">
-                <button class="bg-transparent text-white font-semibold hover:text-white py-1 px-4 border border-zinc-500 hover:border-white rounded-full">
-                    เพิ่ม
-                </button>
-                </div>
-              </div> */}
-
+          
             {/* forPushContentUp */}
               <div class="h-32">
                  {/* footer */}
