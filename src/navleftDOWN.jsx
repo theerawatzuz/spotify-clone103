@@ -12,11 +12,12 @@ function classNames(...classes) {
 }
 
 
-export default function NavLeftDown() {
+export default function NavLeftDown({setIsCreateMode}) {
 
   const [showTooltip, setShowTooltip] = useState(true);
 
   const handleMenuClick = () => {
+      setIsCreateMode(true);
     // เรียกใช้งานฟังก์ชันที่ถูกส่งมาจาก App.jsx เพื่อบันทึกการคลิก
     if (typeof window !== 'undefined' && window.handleMenuClick) {
       window.handleMenuClick();

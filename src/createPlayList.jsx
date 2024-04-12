@@ -68,7 +68,7 @@ export default function CreatePlayList({ setShowNavRight, fetchData }) {
           setShowNavRight(true);
         };
         
-        console.log(addedSongs)
+        // console.log(addedSongs)
     
     return(
         <>

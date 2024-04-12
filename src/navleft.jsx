@@ -1,7 +1,7 @@
 import NavLeftTop from './navleftTOP'
 import NavLeftDown from './navleftDOWN'
 
-export default function NavLeft() {
+export default function NavLeft({ setIsCreateMode }) {
   return (
     <div class="flex flex-col gap-2">
       <div >
@@ -9,7 +9,7 @@ export default function NavLeft() {
     
       </div>
       <div>
-        <NavLeftDown/>
+        <NavLeftDown setIsCreateMode={setIsCreateMode}/>
       </div>
    </div>
   )
